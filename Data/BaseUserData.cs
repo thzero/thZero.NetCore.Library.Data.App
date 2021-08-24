@@ -23,13 +23,14 @@ using System.Text.Json.Serialization;
 
 namespace thZero.Data
 {
-    public abstract class BaseUserData<TSettings> : BaseData
+    public abstract class BaseUserData<TSettings, TPlanData> : BaseData
+		where TPlanData : BasePlanData
 	{
 		#region Public Properties
 		public ExternalUserData External { get; set; }
 		public string PlanId { get; set; }
 		[JsonIgnore]
-		public BasePlanData Plan { get; set; }
+		public TPlanData Plan { get; set; }
 		public ICollection<string> Roles { get; set; } = new List<string>();
 		public TSettings Settings { get; set; }
 		#endregion
