@@ -22,7 +22,19 @@ using System;
 namespace thZero.Data
 {
     public abstract class BaseData
-    {
+	{
+		public virtual void Map(BaseData data)
+		{
+			Enforce.AgainstNull(() => data);
+
+			_id = data._id;
+			Id = data.Id;
+			CreatedTimestamp = data.CreatedTimestamp;
+			CreatedUserId = data.CreatedUserId;
+			UpdatedTimestamp = data.UpdatedTimestamp;
+			UpdatedUserId = data.UpdatedUserId;
+		}
+
 		#region Public Properties
 #pragma warning disable IDE1006 // Naming Styles
 		public string _id { get; set; }

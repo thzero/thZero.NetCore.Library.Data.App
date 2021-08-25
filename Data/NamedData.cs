@@ -22,9 +22,18 @@ using System;
 namespace thZero.Data
 {
     public abstract class NamedData : BaseData
-	{
-		#region Public Properties
-		public string Name { get; set; }
+    {
+        public override void Map(BaseData data)
+        {
+            Enforce.AgainstNull(() => data);
+
+            base.Map(data);
+
+            Name = ((NamedData)data).Name;
+        }
+
+        #region Public Properties
+        public string Name { get; set; }
 		#endregion
     }
 }
